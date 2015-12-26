@@ -8,9 +8,14 @@ class ArticlesController < ApplicationController
   
   def create
     @article = Article.new(article_params)
-    @article.save
-    flash[:success] = "Article successfully created."
-    redirect_to articles_path
+    if @article.save
+      flash[:success] = "Article successfully created."
+      redirect_to articles_path
+    else 
+      flash[:danger] = "There was an error."
+      #render new template again
+      render :new
+    end
   end
   
   private
