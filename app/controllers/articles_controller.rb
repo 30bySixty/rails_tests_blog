@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
       flash[:success] = "Article successfully created."
       redirect_to articles_path
     else 
-      flash[:danger] = "There was an error."
+      flash.now[:danger] = "There was an error."
       #render new template again
       render :new
     end
