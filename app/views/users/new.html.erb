@@ -1,6 +1,6 @@
-<h1>Sign Up</h1>
-
-<%= form_for @user do |f| %>
+<h2 class="text-center">Sign Up</h2>
+<div class="row">
+  <%= form_for @user, :html => {class: "form-horizontal", role: "form"} do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
@@ -11,19 +11,42 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="form-group">
+    <div class="control-label col-md-3">
+      <%= f.label :email %>
+    </div>
+    <div class="col-md-9">
+      <%= f.text_field :email, class: "form-control", autofocus: true %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+  <div class="form-group">
+    <div class="control-label col-md-3">
+      <%= f.label :password %>
+    </div>
+    <div class="col-md-9">
+      <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+      <% if @user.minimum_password_length %>
+        <em>(<%= @user.minimum_password_length %> characters minimum)</em>
+      <% end %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+  <div class="form-group">
+    <div class="control-label col-md-3">
+      <%= f.label :password_confirmation %>
+    </div>
+    <div class="col-md-9">
+      <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-md-offset-3 col-md-9">
+      <%= f.submit "Sign up", class: "btn-btn-primary btn-lg" %>
+    </div>
   </div>
 <% end %>
+  <div class="form-group">
+    <div class="col-md-offset-3 col-md-9">
+      <%= link_to "Log in", login_path %>
+    </div>
+  </div>
+</div>
