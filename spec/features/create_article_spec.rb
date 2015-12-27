@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature "Creating Articles" do
+  before do
+    @john = User.create!(email: "john@example.com", password: "password")
+      
+    visit "/"
+    
+    click_link "Sign in"
+    fill_in "Email", with: @john.email
+    fill_in "Password", with: @john.password
+    click_button "Log In"
+  end
   #give the feature a scnario
   scenario "A user creates a new article" do
     #what is the first thing that's going to happen?

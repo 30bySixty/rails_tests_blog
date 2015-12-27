@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :set_article, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize, except: [:index, :show]
   
   def index
     @articles = Article.all
