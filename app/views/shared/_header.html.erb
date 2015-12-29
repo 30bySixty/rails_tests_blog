@@ -15,10 +15,16 @@
             <%= link_to "Authors", "#" %>
           </li>
           <% if current_user %>
+            <li>
+            <% if false %>
+            <%= link_to "Log out", session_path("current"), method: :delete %>
+            <% end %>
+            <%= link_to "Log out", logout_path %>
+          </li>
             <div class="navbar-right">
               <p class="navbar-text">You are signed in as <%= "#{current_user.email}" %></p>
             </div>
-          <% end %>
+          <% else %>
           <li>
             <% if false %>
             <%= link_to "Sign up", new_user_path %>
@@ -31,12 +37,7 @@
             <% end %>
             <%= link_to "Sign in", login_path %>
           </li>
-          <li>
-            <% if false %>
-            <%= link_to "Log out", session_path("current"), method: "delete" %>
-            <% end %>
-            <%= link_to "Log out", logout_path %>
-          </li>
+          <% end %> 
         </ul>
       </div>
     </div>
