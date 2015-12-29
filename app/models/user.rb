@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
     length = 8
   end
   
+  has_many :articles
 end
